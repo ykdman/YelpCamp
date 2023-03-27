@@ -4,7 +4,14 @@
 const express = require('express');
 const app = express();
 
+//ejs-mate engine
+const ejsMate = require('ejs-mate');
+
+//method-override 사용
 const method_override = require('method-override');
+//morgan 사용 (미들웨어)
+const morgan = require('morgan');
+app.use(morgan('tiny'));
 
 //mongoose Connect
 const mongoose = require('mongoose');
@@ -30,6 +37,9 @@ const Campground = require('./models/campground');
 
 // Utility
 const path = require('path');
+
+//app engine Setting
+app.engine('ejs',ejsMate);
 
 
 //view Setting
