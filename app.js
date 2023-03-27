@@ -81,8 +81,8 @@ app.get('/campgrounds/new', (req,res)=>{
 })
 
 app.post('/campgrounds', async(req,res)=>{
-    const {title, location} = req.body.campground; //title, location 생성자 할당
-    const newCampground = new Campground({title:title, location : location});
+    //const {title, location} = req.body.campground; //title, location 생성자 할당
+    const newCampground = new Campground({...req.body.campground});
     await newCampground.save();
     console.log("new camp Added!");
     console.log(newCampground);
